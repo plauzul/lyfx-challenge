@@ -17,28 +17,43 @@ export class FavoritesProvider {
     });
   }
 
-  add(favorite: any) {
-    if(localStorage.hasOwnProperty("favorites")) {
-      let favorites = JSON.parse(localStorage.getItem("favorites"));
-      if(favorites.length > 0) {
+  get(favorite: any) {
+    return new Promise((resolve, reject) => {
+      if(localStorage.hasOwnProperty("favorites")) {
+        let favorites = JSON.parse(localStorage.getItem("favorites"));
         favorites.forEach((element, key) => {
-          if(element.id != favorite.id) {
-            favorites.push(favorite);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-          } else {
-            favorites.splice(key, 1);
-            console.log(key);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
+          if(element.id == favorite.id) {
+            resolve(element);
           }
         });
       } else {
-        favorites.push(favorite);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
+        reject({status: "not_found"});
       }
+    });
+  }
+
+  add(favorite: any) {
+    if(localStorage.hasOwnProperty("favorites")) {
+      let favorites = JSON.parse(localStorage.getItem("favorites"));
+      favorites.push(favorite);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     } else {
       let arr = [];
       arr.push(favorite);
       localStorage.setItem("favorites", JSON.stringify(arr));
+    }
+  }
+
+  remove(favorite: any) {
+    console.log(favorite);
+    if(localStorage.hasOwnProperty("favorites")) {
+      let favorites = JSON.parse(localStorage.getItem("favorites"));
+      favorites.forEach((element, key) => {
+        if(element.id == favorite.id) {
+          favorites.splice(key, 1);
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+        }
+      });
     }
   }
 

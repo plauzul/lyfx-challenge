@@ -1,8 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-buttons right>
-      <button ion-button icon-only (click)="favorite()">
+      <button ion-button icon-only *ngIf="!icon" (click)="addFavorite()">
         <ion-icon name="heart-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="icon" (click)="removeFavorite()">
+        <ion-icon name="heart"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>

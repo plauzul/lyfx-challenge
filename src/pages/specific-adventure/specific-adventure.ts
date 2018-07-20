@@ -10,6 +10,7 @@ import { FavoritesProvider } from "../../providers/favorites/favorites";
 export class SpecificAdventurePage {
 
   adventure: any;
+  icon: boolean
 
   constructor(
     public navCtrl: NavController,
@@ -20,10 +21,27 @@ export class SpecificAdventurePage {
 
   ionViewDidLoad() {
     this.adventure = this.navParams.get("adventure");
+    this.getFvorite();
   }
 
-  favorite() {
+  getFvorite() {
+    this.favoritesProvider.get(this.adventure)
+    .then((data: any) => {
+      this.icon = true;
+    })
+    .catch((error) => {
+      this.icon = false;
+    });
+  }
+
+  addFavorite() {
     this.favoritesProvider.add(this.adventure);
+    this.icon = true;
+  }
+
+  removeFavorite() {
+    this.favoritesProvider.remove(this.adventure);
+    this.icon = false;
   }
 
 }
