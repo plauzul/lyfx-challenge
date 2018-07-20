@@ -1,0 +1,30 @@
+page-specific-adventure {
+    .img {
+        max-width: 40%;
+        border: 5px solid white;
+        padding: 10px;
+    }
+    
+    .img-circle {
+        border-radius: 50%;
+    }
+
+    .content {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        .img-background {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .img-header {
+            position: absolute;
+            top: 70%;
+            left: 25%;
+            z-index: 500;
+        }
+    }
+}

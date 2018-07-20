@@ -1,0 +1,23 @@
+<ion-content padding class="background">
+  <h1>FAVORITES</h1>
+
+  <div margin text-center *ngIf="!favorites">
+    <img src="assets/imgs/broken-heart.png" width="50%">
+    <p>It doesn´t look like you have any favorite yet</p>
+  </div>
+
+  <ion-grid margin-top *ngIf="favorites">
+    <ion-row>
+      <ion-col col-6 *ngFor="let adventure of favorites">
+        <ion-card class="card-adventure" color="primary" [navPush]="specificAdventure" [navParams]="{adventure: adventure}">
+          <img [src]="adventure.gallery[0].image"/>
+          <ion-card-content no-padding padding-top>
+            <span text-uppercase>{{adventure.adventures}}</span>
+            <b>{{adventure.title}}</b>
+            <p>{{adventure.price | currency:'USD'}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

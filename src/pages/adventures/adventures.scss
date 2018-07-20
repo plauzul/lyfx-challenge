@@ -1,0 +1,16 @@
+page-adventures {
+    .card-adventure {
+        box-shadow: 0px 0px 0px 0px black !important;
+        -webkit-box-shadow: 0px 0px 0px 0px black !important;
+        border-radius: 0px !important;
+        img {
+            border-radius: 5px;
+        }
+        span {
+            font-size: 1.0rem;
+            display: block;
+            color: color($colors, secondary);
+            font-weight: bolder;
+        }
+    }
+}

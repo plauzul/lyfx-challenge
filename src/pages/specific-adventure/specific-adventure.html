@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="favorite()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background">
+  <div class="content">
+    <img [src]="adventure?.gallery[1]?.image" class="img-background">
+    <img [src]="adventure?.gallery[0]?.image" class="img img-circle img-header">
+  </div>
+
+  <ion-grid margin-top padding>
+    <ion-row>
+      <ion-col>
+        <h1>{{adventure?.title}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item color="primary">
+            <div item-start>
+              <ion-icon name="pin"></ion-icon>
+            </div>
+            <h2 text-uppercase>{{adventure?.destinyCity}} - {{adventure?.destinyState}}</h2>
+          </ion-item>
+          <ion-item color="primary">
+            <div item-start>
+              <ion-icon name="time"></ion-icon>
+            </div>
+            <h2 text-uppercase>{{adventure?.duration}} hours</h2>
+          </ion-item>
+          <ion-item color="primary">
+            <div item-start>
+              <ion-icon name="contacts"></ion-icon>
+            </div>
+            <h2 text-uppercase>up to {{adventure?.travellers}} travellers</h2>
+          </ion-item>
+          <ion-item color="primary">
+            <div item-start>
+              <ion-icon name="podium"></ion-icon>
+            </div>
+            <h2 text-uppercase>difficulty level {{adventure?.difficulty}}</h2>
+          </ion-item>
+          <ion-item color="primary">
+            <div item-start>
+              <ion-icon name="logo-usd"></ion-icon>
+            </div>
+            <h2 text-uppercase>{{adventure?.price | currency:'USD'}} per person</h2>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row margin-top>
+      <ion-col>
+        <h2>YOUR LOCAL EXPERT</h2>
+        <span>{{adventure?.localExpert}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row margin-top>
+      <ion-col>
+        <h2>THE ADVENTURE</h2>
+        <span>{{adventure?.description}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row margin-top>
+      <ion-col>
+        <h2>THE GEAR</h2>
+        <span>{{adventure?.gear}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
